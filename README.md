@@ -1,4 +1,4 @@
-<h1 align="center">WebRetriever Benchmark</h1>
+# WebRetriever Benchmark
 WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation
 <p align="center">
   <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="80%">
