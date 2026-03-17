@@ -59,7 +59,7 @@ We design three complementary evaluation protocols for comprehensive assessment:
 </p>
 <br>
 <p align="center">
-  <img src="table3.png" width="70%">
+  <img src="table3.png" width="80%">
 </p>
 <br>
 <p align="center">
