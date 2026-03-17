@@ -18,17 +18,18 @@ We propose three complementary evaluation protocols to systematically assess web
 
 ## Dataset Construction
 <p align="center">
-  <img src="table1.png" width="60%">
+  <em>
+    *Table 1. Comparison between WebRetriever and related benchmarks.  
+    **Intent-Type**: task intent type (G: general; P: professional; G&P: both);  
+    **Setting**: evaluation environment configuration;  
+    **Online**: support for real-world live connection;  
+    **Interactive**: interaction capability;  
+    **Websites**: number of websites;  
+    **Eval-Tasks**: number of evaluation tasks.*
+  </em>
 </p>
 <p align="center">
-  <em>
-    Table 1. Comparison between WebRetriever and related benchmarks.  
-    Intent-Type denotes task intent type (G: general; P: professional; G&P: both).  
-    Setting denotes the evaluation environment configuration.  
-    Online indicates whether real-world live connection is supported.  
-    Interactive indicates whether interaction is enabled.  
-    Websites and Eval-Tasks denote the dataset scale.
-  </em>
+  <img src="table1.png" width="60%">
 </p>
 
 ## NavEval
