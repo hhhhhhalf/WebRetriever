@@ -17,7 +17,7 @@ We propose three complementary evaluation protocols to systematically assess web
 
 ## WebRetriever
 <p align="center">
-  <img src="table1.png" alt="" width="80%">
+  <img src="table1.png" alt="" width="60%">
 </p>
 
 ## NavEval
