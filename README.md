@@ -28,19 +28,18 @@ We propose NavEval, an automated evaluation method that attains approximately 90
 > 3. **Comprehensive evaluation framework:**  
 We propose three complementary evaluation protocols to systematically assess web agents, explicitly disentangling navigation success from answer correctness and characterizing behavioral reliability under injected operational knowledge, thereby providing diagnostic signals missing from prior benchmarks.
 
-## WebRetriever
-### Dataset Construction
+## Dataset Construction
 <p align="center">
   <img src="table1.png" width="70%">
 </p>
 
-### NavEval
+## NavEval
 <p align="center">
   <img src="figure2.png" alt="" width="70%">
 </p>
 <p align="center">Figure 2. Workflow of NavEval. Compared to existing methods, NavEval applies rule-based filtering to extract fine-grained intermediate signals, which are then jointly reasoned with the task description, action trajectory, and final screenshot by an LLM to determine task success, enabling robust evaluation with higher human agreement rates.</p>
 
-### Evaluation Protocols
+## Evaluation Protocols
 <p align="center">
   <img src="figure3.png" alt="" width="70%">
 </p>
