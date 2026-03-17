@@ -17,11 +17,11 @@ We propose NavEval, an automated evaluation method that attains approximately 90
 We propose three complementary evaluation protocols to systematically assess web agents, explicitly disentangling navigation success from answer correctness and characterizing behavioral reliability under injected operational knowledge, thereby providing diagnostic signals missing from prior benchmarks.
 
 ## Dataset Construction
-<p align="center">
+<!-- <p align="center">
   <em>
     Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<font color="blue">G</font>: general; <font color="orange">P</font>: professional; <strong><font color="blue">G</font>&<font color="orange">P</font></strong>: both); <strong>Setting</strong>: evaluation environment configuration; <strong>Online</strong>: support for real-world live connection; <strong>Interactive</strong>: interaction capability; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.
   </em>
-</p>
+</p> -->
 <p align="center">
   <img src="table1.png" width="60%">
 </p>
