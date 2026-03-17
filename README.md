@@ -22,13 +22,13 @@ We propose three complementary evaluation protocols to systematically assess web
 
 ## NavEval
 <p align="center">
-  <img src="figure2.png" alt="" width="60%">
+  <img src="figure2.png" alt="" width="70%">
 </p>
 <p align="center">Figure 2. Workflow of NavEval. Compared to existing methods, NavEval applies rule-based filtering to extract fine-grained intermediate signals, which are then jointly reasoned with the task description, action trajectory, and final screenshot by an LLM to determine task success, enabling robust evaluation with higher human agreement rates.</p>
 
 ## Evaluation Protocols
 <p align="center">
-  <img src="figure3.png" alt="" width="60%">
+  <img src="figure3.png" alt="" width="70%">
 </p>
 <p align="center">Figure 3. Workflow of the semi-automated pipeline for constructing operational documentation in Protocol II. The process integrates automated exploration, evaluation, manual refinement, and LLM-based generation to produce high-quality operational documentation.</p>
 
@@ -38,7 +38,7 @@ We propose three complementary evaluation protocols to systematically assess web
 </p>
 <br>
 <p align="center">
-  <img src="table3.png" width="60%">
+  <img src="table3.png" width="70%">
 </p>
 <br>
 <p align="center">
