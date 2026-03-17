@@ -34,7 +34,7 @@ We propose three complementary evaluation protocols to systematically assess web
 
 ## Experiment Results
 <p align="center">
-  <img src="table2.png" width="60%">
+  <img src="table2.png" width="80%">
 </p>
 <br>
 <p align="center">
@@ -42,5 +42,5 @@ We propose three complementary evaluation protocols to systematically assess web
 </p>
 <br>
 <p align="center">
-  <img src="table4.png" width="60%">
+  <img src="table4.png" width="80%">
 </p>
