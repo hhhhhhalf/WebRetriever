@@ -17,7 +17,7 @@ We propose three complementary evaluation protocols to systematically assess web
 
 ## Dataset Construction
 <p align="center">
-  <img src="table1.png" width="60%">
+  <img src="table1.png" width="70%">
 </p>
 
 ## NavEval
