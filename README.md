@@ -22,10 +22,12 @@ We propose three complementary evaluation protocols to systematically assess web
 
 ## NavEval
 <p align="center">
-  <img src="figure2.png" alt="" width="80%">
+  <img src="figure2.png" alt="" width="60%">
 </p>
 
 ## Evaluation Protocols
-
+<p align="center">
+  <img src="figure3.png" alt="" width="60%">
+</p>
 
 ## Experiment Results
