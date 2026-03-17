@@ -19,6 +19,8 @@ We propose three complementary evaluation protocols to systematically assess web
 ## Dataset Construction
 <p align="center">
   <img src="table1.png" width="60%">
+</p>
+<p align="center">
   <em>
     Table 1. Comparison between WebRetriever and related benchmarks.  
     Intent-Type denotes task intent type (G: general; P: professional; G&P: both).  
