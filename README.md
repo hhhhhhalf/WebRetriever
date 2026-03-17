@@ -1,2 +1,2 @@
 # WebRetriever
-WebRetriever: A Large-Scale Comprehensive 001 001 Benchmark for Efficient Web Agent Evaluation
+WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation
