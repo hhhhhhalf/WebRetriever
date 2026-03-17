@@ -16,11 +16,6 @@ We propose NavEval, an automated evaluation method that attains approximately 90
 We propose three complementary evaluation protocols to systematically assess web agents, explicitly disentangling navigation success from answer correctness and characterizing behavioral reliability under injected operational knowledge, thereby providing diagnostic signals missing from prior benchmarks.
 
 ## Dataset Construction
-<!-- <p align="center">
-  <em>
-    Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<font color="blue">G</font>: general; <font color="orange">P</font>: professional; <strong><font color="blue">G</font>&<font color="orange">P</font></strong>: both); <strong>Setting</strong>: evaluation environment configuration; <strong>Online</strong>: support for real-world live connection; <strong>Interactive</strong>: interaction capability; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.
-  </em>
-</p> -->
 <p align="center">
   <img src="table1.png" width="60%">
 </p>
@@ -38,3 +33,14 @@ We propose three complementary evaluation protocols to systematically assess web
 <p align="center">Figure 3. Workflow of the semi-automated pipeline for constructing operational documentation in Protocol II. The process integrates automated exploration, evaluation, manual refinement, and LLM-based generation to produce high-quality operational documentation.</p>
 
 ## Experiment Results
+<p align="center">
+  <img src="table2.png" width="60%">
+</p>
+<br>
+<p align="center">
+  <img src="table3.png" width="60%">
+</p>
+<br>
+<p align="center">
+  <img src="table4.png" width="60%">
+</p>
