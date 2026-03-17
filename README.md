@@ -16,7 +16,7 @@ We propose NavEval, an automated evaluation method that attains approximately 90
 3. **Comprehensive evaluation framework:**  
 We propose three complementary evaluation protocols to systematically assess web agents, explicitly disentangling navigation success from answer correctness and characterizing behavioral reliability under injected operational knowledge, thereby providing diagnostic signals missing from prior benchmarks.
 
-## WebRetriever
+## Dataset Construction
 <p align="center">
   <img src="table1.png" alt="" width="60%">
 </p>
