@@ -1,7 +1,7 @@
 # WebRetriever
 WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation
 <p align="center">
-  <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="800">
+  <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="80%">
 </p>
 
 ## Abstract
@@ -16,6 +16,9 @@ We propose NavEval, an automated evaluation method that attains approximately 90
 We propose three complementary evaluation protocols to systematically assess web agents, explicitly disentangling navigation success from answer correctness and characterizing behavioral reliability under injected operational knowledge, thereby providing diagnostic signals missing from prior benchmarks.
 
 ## WebRetriever
+<p align="center">
+  <img src="table1.png" alt="" width="80%">
+</p>
 
 ## NavEval
 
