@@ -9,6 +9,7 @@
 <a href="https://github.com/hhhhhhalf/WebRetriever">🤗 Data</a>
 </p>
 
+## Motivation
 <p align="center">
   <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="80%">
 </p>
