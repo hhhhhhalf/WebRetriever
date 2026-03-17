@@ -2,8 +2,6 @@
 <p align="center">
 <a href="https://github.com/hhhhhhalf/WebRetriever">📃 Paper</a>
 •
-<a href="https://github.com/hhhhhhalf/WebRetriever">📃 Blog</a>
-•
 <a href="https://github.com/hhhhhhalf/WebRetriever">🏆 Leaderboard</a>
 •
 <a href="https://github.com/hhhhhhalf/WebRetriever">🤗 Data</a>
