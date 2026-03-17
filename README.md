@@ -1,5 +1,5 @@
-# WebRetriever Benchmark
-WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation
+# WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation
+<h1 align="center">WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation</h1>
 <p align="center">
   <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="80%">
 </p>
