@@ -1,7 +1,7 @@
 # WebRetriever
 WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation
 <p align="center">
-  <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="600">
+  <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="800">
 </p>
 
 ## Abstract
