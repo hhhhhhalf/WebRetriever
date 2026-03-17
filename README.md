@@ -48,9 +48,9 @@ We propose three complementary evaluation protocols to systematically assess web
 
 We design three complementary evaluation protocols for comprehensive assessment: 
 
-> 1. **Protocol I** evaluates basic navigation ability to reach target pages;
-> 2. **Protocol II** assesses navigation performance when provided with operational knowledge; 
-> 3. **Protocol III** measures end-to-end task completion by jointly evaluating navigation and information extraction, avoiding the limitation of equating page arrival with task success.
+> (1) **Protocol I** evaluates basic navigation ability to reach target pages;
+> (2) **Protocol II** assesses navigation performance when provided with operational knowledge; 
+> (3) **Protocol III** measures end-to-end task completion by jointly evaluating navigation and information extraction, avoiding the limitation of equating page arrival with task success.
 
 
 ## Experiment Results
