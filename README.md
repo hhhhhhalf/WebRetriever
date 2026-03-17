@@ -19,7 +19,7 @@ We propose three complementary evaluation protocols to systematically assess web
 ## Dataset Construction
 <p align="center">
   <em>
-    Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<font color="blue">G</span>: general; <font color="orange">P</span>: professional; <strong><font color="blue">G</span>&<font color="orange">P</span></strong>: both); <strong>Setting</strong>: evaluation environment configuration; <strong>Online</strong>: support for real-world live connection; <strong>Interactive</strong>: interaction capability; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.
+    Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<font color="blue">G</font>: general; <font color="orange">P</font>: professional; <strong><font color="blue">G</font>&<font color="orange">P</font></strong>: both); <strong>Setting</strong>: evaluation environment configuration; <strong>Online</strong>: support for real-world live connection; <strong>Interactive</strong>: interaction capability; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.
   </em>
 </p>
 <p align="center">
