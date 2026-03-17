@@ -12,3 +12,9 @@ We curate 1,500 tasks across 800 real websites spanning diverse domains and user
 We propose NavEval, an automated evaluation method that attains approximately 90% human-level agreement in large-scale experiments, thereby enabling practical and reliable assessment of web agent performance at scale and in real-time.
 3. **Comprehensive evaluation framework:**  
 We propose three complementary evaluation protocols to systematically assess web agents, explicitly disentangling navigation success from answer correctness and characterizing behavioral reliability under injected operational knowledge, thereby providing diagnostic signals missing from prior benchmarks.
+
+## WebRetriever
+
+## NavEval
+
+## Evaluation Protocols
