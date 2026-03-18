@@ -1,4 +1,4 @@
-<h1 align="center">🤖 WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation</h1>
+<h1 align="center">🌐 WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation</h1>
 <p align="center">
 <a href="https://github.com/hhhhhhalf/WebRetriever">📃 Paper</a>
 •
