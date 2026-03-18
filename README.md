@@ -4,7 +4,7 @@
 •
 <a href="https://github.com/hhhhhhalf/WebRetriever">🏆 Leaderboard</a>
 •
-<a href="https://github.com/hhhhhhalf/WebRetriever">🤗 Data</a>
+<a href="https://github.com/hhhhhhalf/WebRetriever">🤗 Data (Release Soon)</a>
 </p>
 
 
