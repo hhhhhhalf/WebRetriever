@@ -6,7 +6,7 @@
 •
 <a href="https://github.com/hhhhhhalf/WebRetriever">🤗 Data (Release Soon)</a>
 •
-<a href="https://github.com/hhhhhhalf/WebRetriever/blob/main/README_zh.md">🤗 Chinese</a>
+<a href="https://github.com/hhhhhhalf/WebRetriever/blob/main/README_zh.md">🈶 Chinese</a>
 </p>
 
 
