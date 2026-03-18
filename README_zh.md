@@ -10,9 +10,10 @@
 ## :bulb: 动机
 
 <p align="center">
-  <img src="figure1.png" alt="WebRetriever 基准的动机。" width="80%">
+  <img src="figure1.png" alt="WebRetriever 基准测试的动机。" width="80%">
 </p>
-<p align="center"><em>图 1. WebRetriever 基准的动机。WebRetriever 从三个方面解决了先前工作的关键局限性：数据集规模和多样性、自动化评估的可靠性，以及面向实际部署的评估协议。</em></p>
+<p align="center"><em>图 1. WebRetriever 基准测试的动机。WebRetriever 从三个方面解决了先前工作的关键局限性：数据集规模和多样性、自动化评估的可靠性，以及面向部署的评估协议。</em>
+</p>
 
 ## :page_facing_up: 摘要
 
@@ -33,6 +34,8 @@
 
 ## :bar_chart: 数据集构建
 
+<p align="center"><em>表 1. WebRetriever 与相关基准测试的对比。<strong>意图类型</strong>: 任务意图类型 (<strong>G</strong>: 通用, <strong>P</strong>: 专业, <strong>G</strong>&<strong>P</strong>: 两者兼具); <strong>设置</strong>: 评估环境配置; <strong>在线</strong>: 是否支持在真实环境中进行在线实时连接评估; <strong>交互性</strong>: 环境是否允许交互; <strong>网站数量</strong>: 网站数量; <strong>评估任务数</strong>: 评估任务数量。</em>
+</p>
 <p align="center">
   <img src="table1.png" width="70%">
 </p>
@@ -42,7 +45,8 @@
 <p align="center">
   <img src="figure2.png" alt="" width="70%">
 </p>
-<p align="center"><em>图 2. NavEval 的工作流程。与现有方法相比，NavEval 应用基于规则的过滤来提取细粒度的中间信号，然后由 LLM 将这些信号与任务描述、动作轨迹和最终截图联合推理，以确定任务是否成功，从而实现更稳健的评估，并获得更高的人类一致性。</em></p>
+<p align="center"><em>图 2. NavEval 的工作流程。与现有方法相比，NavEval 应用基于规则的过滤来提取细粒度的中间信号，然后由大语言模型将这些信号与任务描述、动作轨迹和最终截图进行联合推理，以确定任务是否成功，从而实现更稳健的评估，并获得更高的人类一致性评分。</em>
+</p>
 
 ## :clipboard: 评估协议
 
@@ -62,18 +66,20 @@
 
 ## :chart_with_upwards_trend: 实验结果
 
-<!-- <p align="center"><em>Table 2. Task Success Rate (SR) of web agent trajectories on WebRetriever across the three proposed evaluation protocols, assessed using NavEval and human annotation, respectively. All values are reported as percentages (%).</em></p> -->
-
+<p align="center"><em>表 2. 在 WebRetriever 数据集上，网络智能体轨迹在三种提出的评估协议下的任务成功率 (SR)，分别使用 NavEval 和人工标注进行评估。所有数值均以百分比 (%) 报告。</em>
+</p>
 <p align="center">
-  <img src="table2.png" width="80%">
+  <img src="table2.png" width="60%">
 </p>
 <br>
-<!-- <p align="center"><em>Table 3. Human Agreement Rate (AR) of web agent trajectories on WebRetriever across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em></p> -->
+<p align="center"><em>表 3. 在 WebRetriever 数据集上，使用不同 LLM-as-a-Judge 模型的自动化评估方法对网络智能体轨迹的人类一致性评分 (AR)。Avg AR 表示平均人类一致性评分。所有数值均以百分比 (%) 报告。</em>
+</p>
 <p align="center">
   <img src="table3.png" width="80%">
 </p>
 <br>
-<!-- <p align="center"><em>Table 4. Human Agreement Rate (AR) of web agent trajectories on Online-Mind2Web across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em></p> -->
+<p align="center"><em>表 4. 在 Online-Mind2Web 数据集上，使用不同 LLM-as-a-Judge 模型的自动化评估方法对网络智能体轨迹的人类一致性评分 (AR)。Avg AR 表示平均人类一致性评分。所有数值均以百分比 (%) 报告。</em>
+</p>
 <p align="center">
-  <img src="table4.png" width="80%">
+  <img src="table4.png" width="60%">
 </p>
