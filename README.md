@@ -49,8 +49,9 @@ We propose three complementary evaluation protocols to systematically assess web
 <br>
 
 
-> [!NOTE] **Evaluation Protocols**
->
+> [!NOTE] 
+> **Evaluation Protocols**
+> 
 > ### Protocol I — Basic Navigation
 > Evaluates the agent’s ability to reach target pages.
 >
