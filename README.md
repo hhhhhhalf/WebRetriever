@@ -48,14 +48,17 @@ We propose three complementary evaluation protocols to systematically assess web
 <p align="center"><em>Figure 3. Workflow of the semi-automated pipeline for constructing operational documentation in Protocol II. The process integrates automated exploration, evaluation, manual refinement, and LLM-based generation to produce high-quality operational documentation.</em></p>
 <br>
 
-> [!NOTE]
-> We design three complementary evaluation protocols for comprehensive assessment:
-> 
-> (1) **Protocol I** evaluates basic navigation ability to reach target pages;
-> 
-> (2) **Protocol II** assesses navigation performance when provided with operational knowledge;
-> 
-> (3) **Protocol III** measures end-to-end task completion by jointly evaluating navigation and information extraction, avoiding the limitation of equating page arrival with task success.
+
+> [!NOTE] **Evaluation Protocols**
+>
+> ### Protocol I — Basic Navigation
+> Evaluates the agent’s ability to reach target pages.
+>
+> ### Protocol II — Operational Knowledge
+> Assesses navigation performance when provided with operational instructions.
+>
+> ### Protocol III — End-to-End Task Completion
+> Measures combined navigation and information extraction, beyond simple page arrival.
 
 
 ## :chart_with_upwards_trend: Experiment Results
