@@ -5,6 +5,8 @@
 <a href="https://github.com/hhhhhhalf/WebRetriever">🏆 Leaderboard</a>
 •
 <a href="https://github.com/hhhhhhalf/WebRetriever">🤗 Data (Release Soon)</a>
+•
+<a href="[https://github.com/hhhhhhalf/WebRetriever](https://github.com/hhhhhhalf/WebRetriever/blob/main/README_zh.md)">🤗 Chinese</a>
 </p>
 
 
