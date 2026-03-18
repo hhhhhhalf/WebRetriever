@@ -6,7 +6,7 @@
 •
 <a href="https://github.com/hhhhhhalf/WebRetriever">🤗 数据 (即将发布)</a>
 •
-<a href="https://github.com/hhhhhhalf/WebRetriever/blob/main/README.md">🤗 英文版</a>
+<a href="https://github.com/hhhhhhalf/WebRetriever/blob/main/README.md">🔤 英文版</a>
 </p>
 
 ## :bulb: 动机
