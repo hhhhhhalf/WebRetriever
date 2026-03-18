@@ -32,6 +32,8 @@ We propose three complementary evaluation protocols to systematically assess web
 
 
 ## :bar_chart: Dataset Construction
+<p align="center"><em>Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<strong>G</strong>: general, <strong>P</strong>: professional, <strong>G</strong>\&<strong>P</strong>: both); \textbf{Setting}: the evaluation environment configuration; <strong>Online</strong>: whether online live connection evaluation is supported in real-world environments; <strong>Interactive</strong>: whether the environment allows interaction; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.</em>
+</p>
 <p align="center">
   <img src="table1.png" width="70%">
 </p>
@@ -58,17 +60,20 @@ We design three complementary evaluation protocols for comprehensive assessment:
 
 
 ## :chart_with_upwards_trend: Experiment Results
-<!-- <p align="center"><em>Table 2. Task Success Rate (SR) of web agent trajectories on WebRetriever across the three proposed evaluation protocols, assessed using NavEval and human annotation, respectively. All values are reported as percentages (%).</em></p> -->
+<p align="center"><em>Table 2. Task Success Rate (SR) of web agent trajectories on WebRetriever across the three proposed evaluation protocols, assessed using NavEval and human annotation, respectively. All values are reported as percentages (%).</em>
+</p>
 <p align="center">
   <img src="table2.png" width="80%">
 </p>
 <br>
-<!-- <p align="center"><em>Table 3. Human Agreement Rate (AR) of web agent trajectories on WebRetriever across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em></p> -->
+<p align="center"><em>Table 3. Human Agreement Rate (AR) of web agent trajectories on WebRetriever across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em>
+</p>
 <p align="center">
   <img src="table3.png" width="80%">
 </p>
 <br>
-<!-- <p align="center"><em>Table 4. Human Agreement Rate (AR) of web agent trajectories on Online-Mind2Web across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em></p> -->
+<p align="center"><em>Table 4. Human Agreement Rate (AR) of web agent trajectories on Online-Mind2Web across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em>
+</p>
 <p align="center">
   <img src="table4.png" width="80%">
 </p>
