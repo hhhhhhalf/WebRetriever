@@ -36,6 +36,9 @@ We propose three complementary evaluation protocols to systematically assess web
 </p>
 
 ## :brain: NavEval
+## :triangular_ruler: NavEval
+## :gear: NavEval
+## :microscope: NavEval
 <p align="center">
   <img src="figure2.png" alt="" width="70%">
 </p>
