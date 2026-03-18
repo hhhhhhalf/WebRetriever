@@ -65,7 +65,7 @@ We design three complementary evaluation protocols for comprehensive assessment:
 <p align="center"><em>Table 2. Task Success Rate (SR) of web agent trajectories on WebRetriever across the three proposed evaluation protocols, assessed using NavEval and human annotation, respectively. All values are reported as percentages (%).</em>
 </p>
 <p align="center">
-  <img src="table2.png" width="70%">
+  <img src="table2.png" width="60%">
 </p>
 <br>
 <p align="center"><em>Table 3. Human Agreement Rate (AR) of web agent trajectories on WebRetriever across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em>
@@ -77,5 +77,5 @@ We design three complementary evaluation protocols for comprehensive assessment:
 <p align="center"><em>Table 4. Human Agreement Rate (AR) of web agent trajectories on Online-Mind2Web across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em>
 </p>
 <p align="center">
-  <img src="table4.png" width="70%">
+  <img src="table4.png" width="60%">
 </p>
