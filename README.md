@@ -19,6 +19,7 @@ As web agents increasingly demonstrate capabilities in automated task execution,
 </div>
 
 ## Main Contributions
+> [!IMPORTANT] 
 > 1. **A large-scale, comprehensive benchmark for realistic web agent evaluation:**  
 We curate 1,500 tasks across 800 real websites spanning diverse domains and user intents. Compared with prior benchmarks, WebRetriever provides unprecedented scale, diversity, and coverage, enabling more comprehensive and representative evaluation of web agents in realistic online environments.
 > 2. **A general and high-precision automated evaluation method:**  
