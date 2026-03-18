@@ -54,7 +54,7 @@ We design three complementary evaluation protocols for comprehensive assessment:
 > (3) **Protocol III** measures end-to-end task completion by jointly evaluating navigation and information extraction, avoiding the limitation of equating page arrival with task success.
 
 
-## Experiment Results
+## 📈 Experiment Results
 <p align="center">
   <img src="table2.png" width="80%">
 </p>
