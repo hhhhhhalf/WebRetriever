@@ -12,7 +12,8 @@
 <p align="center">
   <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="80%">
 </p>
-<p align="center"><em>Figure 1. Motivation for the WebRetriever benchmark. WebRetriever addresses key limitations of prior work from three aspects: dataset scale and diversity, automated evaluation reliability, and deployment-oriented evaluation protocols.</em></p>
+<!-- <p align="center"><em>Figure 1. Motivation for the WebRetriever benchmark. WebRetriever addresses key limitations of prior work from three aspects: dataset scale and diversity, automated evaluation reliability, and deployment-oriented evaluation protocols.</em>
+</p> -->
 
 
 ## :page_facing_up: Abstract
@@ -32,8 +33,8 @@ We propose three complementary evaluation protocols to systematically assess web
 
 
 ## :bar_chart: Dataset Construction
-<p align="center"><em>Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<strong>G</strong>: general, <strong>P</strong>: professional, <strong>G</strong>\&<strong>P</strong>: both); \textbf{Setting}: the evaluation environment configuration; <strong>Online</strong>: whether online live connection evaluation is supported in real-world environments; <strong>Interactive</strong>: whether the environment allows interaction; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.</em>
-</p>
+<!-- <p align="center"><em>Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<strong>G</strong>: general, <strong>P</strong>: professional, <strong>G</strong>\&<strong>P</strong>: both); \textbf{Setting}: the evaluation environment configuration; <strong>Online</strong>: whether online live connection evaluation is supported in real-world environments; <strong>Interactive</strong>: whether the environment allows interaction; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.</em>
+</p> -->
 <p align="center">
   <img src="table1.png" width="70%">
 </p>
@@ -42,14 +43,14 @@ We propose three complementary evaluation protocols to systematically assess web
 <p align="center">
   <img src="figure2.png" alt="" width="70%">
 </p>
-<p align="center"><em>Figure 2. Workflow of NavEval. Compared to existing methods, NavEval applies rule-based filtering to extract fine-grained intermediate signals, which are then jointly reasoned with the task description, action trajectory, and final screenshot by an LLM to determine task success, enabling robust evaluation with higher human agreement rates.</em></p>
+<!-- <p align="center"><em>Figure 2. Workflow of NavEval. Compared to existing methods, NavEval applies rule-based filtering to extract fine-grained intermediate signals, which are then jointly reasoned with the task description, action trajectory, and final screenshot by an LLM to determine task success, enabling robust evaluation with higher human agreement rates.</em></p> -->
 
 ## :clipboard: Evaluation Protocols
 <p align="center">
   <img src="figure3.png" alt="" width="70%">
 </p>
-<p align="center"><em>Figure 3. Workflow of the semi-automated pipeline for constructing operational documentation in Protocol II. The process integrates automated exploration, evaluation, manual refinement, and LLM-based generation to produce high-quality operational documentation.</em></p>
-<br>
+<!-- <p align="center"><em>Figure 3. Workflow of the semi-automated pipeline for constructing operational documentation in Protocol II. The process integrates automated exploration, evaluation, manual refinement, and LLM-based generation to produce high-quality operational documentation.</em></p>
+<br> -->
 
 We design three complementary evaluation protocols for comprehensive assessment:
 > 1. **Protocol I** evaluates basic navigation ability to reach target pages.
@@ -60,20 +61,20 @@ We design three complementary evaluation protocols for comprehensive assessment:
 
 
 ## :chart_with_upwards_trend: Experiment Results
-<p align="center"><em>Table 2. Task Success Rate (SR) of web agent trajectories on WebRetriever across the three proposed evaluation protocols, assessed using NavEval and human annotation, respectively. All values are reported as percentages (%).</em>
-</p>
+<!-- <p align="center"><em>Table 2. Task Success Rate (SR) of web agent trajectories on WebRetriever across the three proposed evaluation protocols, assessed using NavEval and human annotation, respectively. All values are reported as percentages (%).</em>
+</p> -->
 <p align="center">
   <img src="table2.png" width="80%">
 </p>
 <br>
-<p align="center"><em>Table 3. Human Agreement Rate (AR) of web agent trajectories on WebRetriever across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em>
-</p>
+<!-- <p align="center"><em>Table 3. Human Agreement Rate (AR) of web agent trajectories on WebRetriever across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em>
+</p> -->
 <p align="center">
   <img src="table3.png" width="80%">
 </p>
 <br>
-<p align="center"><em>Table 4. Human Agreement Rate (AR) of web agent trajectories on Online-Mind2Web across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em>
-</p>
+<!-- <p align="center"><em>Table 4. Human Agreement Rate (AR) of web agent trajectories on Online-Mind2Web across automated evaluation methods with different LLM-as-a-Judge models. Avg AR denotes the average human agreement rate. All values are reported as percentages (%).</em>
+</p> -->
 <p align="center">
   <img src="table4.png" width="80%">
 </p>
