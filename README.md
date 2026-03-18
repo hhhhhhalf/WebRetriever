@@ -33,7 +33,7 @@ We propose three complementary evaluation protocols to systematically assess web
 
 
 ## :bar_chart: Dataset Construction
-<p align="center"><em>Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<strong>G</strong>: general, <strong>P</strong>: professional, <strong>G</strong>\&<strong>P</strong>: both); \textbf{Setting}: the evaluation environment configuration; <strong>Online</strong>: whether online live connection evaluation is supported in real-world environments; <strong>Interactive</strong>: whether the environment allows interaction; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.</em>
+<p align="center"><em>Table 1. Comparison between WebRetriever and related benchmarks. <strong>Intent-Type</strong>: task intent type (<strong>G</strong>: general, <strong>P</strong>: professional, <strong>G</strong>&<strong>P</strong>: both); <strong>Setting</strong>: the evaluation environment configuration; <strong>Online</strong>: whether online live connection evaluation is supported in real-world environments; <strong>Interactive</strong>: whether the environment allows interaction; <strong>Websites</strong>: number of websites; <strong>Eval-Tasks</strong>: number of evaluation tasks.</em>
 </p>
 <p align="center">
   <img src="table1.png" width="70%">
