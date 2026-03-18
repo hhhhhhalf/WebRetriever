@@ -40,6 +40,7 @@ We propose three complementary evaluation protocols to systematically assess web
 ## :gear: NavEval
 ## :microscope: NavEval
 ## :balance_scale: NavEval
+## :mag: NavEval
 <p align="center">
   <img src="figure2.png" alt="" width="70%">
 </p>
