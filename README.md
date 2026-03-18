@@ -48,10 +48,8 @@ We propose three complementary evaluation protocols to systematically assess web
 <p align="center"><em>Figure 3. Workflow of the semi-automated pipeline for constructing operational documentation in Protocol II. The process integrates automated exploration, evaluation, manual refinement, and LLM-based generation to produce high-quality operational documentation.</em></p>
 <br>
 
-
+**Evaluation Protocols**
 > [!NOTE] 
-> **Evaluation Protocols**
-> 
 > ### Protocol I — Basic Navigation
 > Evaluates the agent’s ability to reach target pages.
 >
