@@ -35,7 +35,6 @@ We propose three complementary evaluation protocols to systematically assess web
   <img src="table1.png" width="70%">
 </p>
 
-## :brain: NavEval
 ## :balance_scale: NavEval
 <p align="center">
   <img src="figure2.png" alt="" width="70%">
