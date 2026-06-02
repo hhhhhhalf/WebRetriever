@@ -10,7 +10,7 @@
 </p>
 
 
-## :bulb: Motivation
+## 💡 Motivation
 <p align="center">
   <img src="figure1.png" alt="Motivation for the WebRetriever benchmark." width="80%">
 </p>
