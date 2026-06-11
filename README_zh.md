@@ -2,7 +2,7 @@
 <p align="center">
 <a href="https://github.com/hhhhhhalf/WebRetriever">📃 论文</a>
 •
-<a href="https://github.com/hhhhhhalf/WebRetriever">🏆 排行榜</a>
+<a href="https://hhhhhhalf.github.io/WebRetriever/">🏆 排行榜</a>
 •
 <a href="https://github.com/hhhhhhalf/WebRetriever">🤗 数据 (即将发布)</a>
 •
