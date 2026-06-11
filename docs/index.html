@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation">
+  <meta name="keywords" content="Web Agent, Dataset and Benchmark, LLM-as-a-Judge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation</title>
+  <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HD6M0ESGZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0HD6M0ESGZ');
+  </script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="static/images/favicon.png">
+
+  <link rel="stylesheet" href="./stylesheets/layout.css">
+  <link rel="stylesheet" href="./stylesheets/index.css">
+  <link rel="stylesheet" href="./bowe_componets/css/bootstrap.table.min.css">
+
+
+
+  <style>
+    .first-rank-star {
+      color: gold;
+      font-size: 1.2em;
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+      margin-left: 5px;
+    }
+    
+    .first-rank-row {
+      background-color: rgba(255, 215, 0, 0.1) !important;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    
+    .trajectory-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #3273dc;
+      text-decoration: none;
+    }
+    
+    .trajectory-preview {
+      width: 60px;
+      height: 40px;
+      object-fit: cover;
+      margin-top: 5px;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    
+    .trajectory-link:hover .trajectory-preview {
+      width: 80px;
+      height: 60px;
+    }
+
+    /* Benchmark Comparison Table (Table 1) Styles */
+    #benchmarkTable thead th { color: black !important; padding: 12px 14px !important; }
+    #benchmarkTable tbody td { padding: 10px 12px !important; vertical-align: middle; }
+    #benchmarkTable tbody tr:nth-child(even) { background-color: #fafafa; }
+    #benchmarkTable tbody tr:hover:not(:last-child) { background-color: #e8f4fd !important; transition: background 0.2s; }
+    #benchmarkTable td:nth-last-child(-n+2),
+    #benchmarkTable th:nth-last-child(-n+2) { text-align: right !important; }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://www.mininglamp.com/" target="_blank">
+          <!-- <span class="icon">
+            <i class="fas fa-home"></i>
+          </span> -->
+          <img src="static/images/mininglamp.png" alt="Mininglamp" style="height: 22px;">
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More from Mininglamp-AI
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/Mininglamp-AI/Mano-P" target="_blank">
+              <span class="icon" style="margin-right: 6px;"><i class="fab fa-github"></i></span>
+              <strong>Mano-P</strong>
+              <span style="background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; margin-left: 8px;">Open-source GUI Model</span>
+            </a>
+            <a class="navbar-item" href="https://github.com/Mininglamp-AI/mano-skill" target="_blank">
+              <span class="icon" style="margin-right: 6px;"><i class="fab fa-github"></i></span>
+              <strong>Mano-Skill</strong>
+              <span style="background: #f3e5f5; color: #6a1b9a; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; margin-left: 8px;">GUI Agent Skill</span>
+            </a>
+            <a class="navbar-item" href="https://github.com/Mininglamp-AI/mano-afk" target="_blank">
+              <span class="icon" style="margin-right: 6px;"><i class="fab fa-github"></i></span>
+              <strong>Mano-AFK</strong>
+              <span style="background: #fff3e0; color: #e65100; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; margin-left: 8px;">Autonomous App Builder</span>
+            </a>
+            <a class="navbar-item" href="https://github.com/Mininglamp-AI/mano-asr" target="_blank">
+              <span class="icon" style="margin-right: 6px;"><i class="fab fa-github"></i></span>
+              <strong>Mano-ASR</strong>
+              <span style="background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; margin-left: 8px;">Speech Recognition</span>
+            </a>
+            <a class="navbar-item" href="https://github.com/Mininglamp-AI/cider" target="_blank">
+              <span class="icon" style="margin-right: 6px;"><i class="fab fa-github"></i></span>
+              <strong>Cider</strong>
+              <span style="background: #fce4ec; color: #c62828; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; margin-left: 8px;">INT8 on Apple Silicon</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              🌐 WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="">Wei Dong</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Tianyu Fu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Zhe Yu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Hanning Wang</a><sup>1</sup>,</span>
+              <br>
+              <span class="author-block">
+                <a href="">Anyang Su</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Zhizhou Fang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Yuyang Chen</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Shuo Wang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Minghui Wu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Ping Jiang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Zhen Lei</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Chenxu Zhao</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup><a href="https://www.mininglamp.com/" target="_blank">Mininglamp Technology</a></span>
+            </div>
+
+            <br>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/hhhhhhalf/WebRetriever"
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data (coming soon)</span>
+                  </a>
+                </span>
+                <!-- Leaderboard Link. -->
+                <span class="link-block">
+                  <a href="#leaderboard"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-trophy"></i>
+                    </span>
+                    <span>Leaderboard</span>
+                  </a>
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Main Figure. -->
+      <h2 class="title is-3">💡 Motivation</h2>
+      <div class="content has-text-justified">
+        <p>Existing web agent evaluation suffers from three key limitations: <strong>(1) insufficient benchmark coverage</strong> — offline benchmarks lack real-world fidelity, while online benchmarks remain limited in website scale, domain diversity, and intent variety, leading to biased and overly optimistic assessments; <strong>(2) unscalable evaluation methods</strong> — human annotation is costly and impractical at scale, and current automated approaches lack sufficient accuracy on complex queries; <strong>(3) narrow evaluation dimensions</strong> — existing protocols fail to systematically assess agents' ability to leverage external knowledge and execute end-to-end workflows required for real-world deployment. WebRetriever addresses all three gaps through large-scale diverse benchmarking, a reliable automated evaluation method, and deployment-oriented evaluation protocols.</p>
+        <img src="static/images/motivation.png" width="90%" alt="webretriever motivation"
+          class="responsive-image" style="display: block; margin: 0 auto;">
+        <md-block>
+          Motivation for the WebRetriever benchmark. WebRetriever addresses key limitations of prior work from three aspects: dataset scale and diversity, automated evaluation reliability, and deployment-oriented evaluation protocols.
+        </md-block>
+      </div>
+      <!--/ Main Figure. -->
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-wdith">
+          <h2 class="title is-3">📄 Abstract</h2>
+          <div class="content has-text-justified">
+            <md-block>
+              As web agents increasingly demonstrate capabilities in automated task execution, the development of robust evaluation frameworks for assessing their navigation and task completion performance has emerged as a critical research priority. However, existing benchmarks exhibit several fundamental limitations. First, they suffer from insufficient scale and limited domain diversity, thereby constraining comprehensive evaluation of cross-domain generalization. Second, prevailing LLM-as-Judge evaluation methodologies inadequately capture fine-grained interaction semantics, particularly regarding precise query formulation and filtering operations. Third, current benchmarks predominantly emphasize navigation success metrics while neglecting critical requirements for real-world deployment scenarios. To address these limitations, we introduce WebRetriever, a large-scale benchmark encompassing 800 websites and 1,550 tasks across diverse domains, including consumer, professional, and enterprise sectors, with comprehensive coverage of user intent patterns. We propose NavEval (Navigation Evaluation), a novel LLM-as-Judge framework that leverages rich interaction context beyond visual screenshots, achieving state-of-the-art alignment with human judgment across multiple evaluation datasets. Furthermore, we establish three complementary evaluation protocols that collectively provide holistic assessment of web agent capabilities: navigation proficiency, knowledge-assisted interaction, and end-to-end task completion with information extraction. Extensive experimental analysis reveals substantial performance disparities across evaluation protocols, demonstrating that navigation success alone serves as an insufficient predictor of real-world application effectiveness. WebRetriever delivers fine-grained diagnostic insights into agent capabilities and establishes a rigorous foundation for advancing web agent research and development.
+            </md-block>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">⭐ Main Contributions</h2>
+      <div class="content has-text-justified">
+        <div style="display: flex; align-items: flex-start; gap: 16px; padding: 18px 0; border-bottom: 1px solid #eee;">
+          <p style="margin: 0;"><strong>(1) A large-scale, comprehensive benchmark for realistic web agent evaluation.</strong> We curate 1,550 tasks across 800 real websites spanning diverse domains and user intents. Compared with prior benchmarks, WebRetriever provides unprecedented scale, diversity, and coverage, enabling more comprehensive and representative evaluation of web agents in realistic online environments.</p>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 16px; padding: 18px 0; border-bottom: 1px solid #eee;">
+          <p style="margin: 0;"><strong>(2) A general and high-precision automated evaluation method.</strong> We propose NavEval, an automated evaluation method that attains approximately 90% human-level agreement in large-scale experiments, thereby enabling practical and reliable assessment of web agent performance at scale and in real-time.</p>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 16px; padding: 18px 0;">
+          <p style="margin: 0;"><strong>(3) Comprehensive evaluation framework.</strong> We propose three complementary evaluation protocols to systematically assess web agents, explicitly disentangling navigation success from answer correctness and characterizing behavioral reliability under injected operational knowledge, thereby providing diagnostic signals missing from prior benchmarks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Data Statistics. -->
+      <h2 class="title is-3">📊 Data Statistics & Comparison</h2>
+      <div class="content has-text-justified">
+        <md-block>
+          Compared with prior benchmarks, WebRetriever encompasses 1,550 cross-industry tasks and over 800 carefully 
+          curated high-quality active websites. To capture the fundamental landscape of mainstream internet behavior, 
+          we leverage SimilarWeb traffic data as our baseline, targeting eight core sectors including Technology & 
+          Internet, Business & Finance, Education & Research, Entertainment & Travel, Life Services, Healthcare, 
+          Industrial Manufacturing, and Public Services, WebRetriever spans eight core industry sectors closely related 
+          to everyday life and work. We select the top 30 sites by traffic within each sector, and additionally 
+          incorporate specialized vertical sites from authoritative internet research institutions (e.g., 199it) that 
+          maintain comprehensive data navigation repositories. This approach particularly strengthens our dataset's 
+          evaluation capabilities in business intelligence domains while ensuring broad website type distribution.
+          At the task design level, a diverse team comprising industry experts, mid-level managers, senior data analysts, 
+          and university students contributes tasks for websites within their domains of expertise, grounded in authentic 
+          user intents. Building upon this foundation, we categorize task intents into two orthogonal dimensions: "general 
+          intents" and "professional intents". By combining these intent types with domain-specific 
+          "Fact Elements," we generate numerous tasks with distinct scenario characteristics.
+        </md-block>
+      </div>
+
+      <div class="content has-text-justified">
+        <div style="display: flex; gap: 10px; align-items: flex-start; justify-content: center; max-width: 800px; margin: 0 auto;">
+          <div style="width: 50%; text-align: center;">
+            <img src="static/images/website_domain.png" style="width: 100%; display: block;" alt="webretriever data statistics" class="responsive-image">
+            <p style="margin-top: 8px;">(a) Website Domain Distribution</p>
+          </div>
+          <div style="width: 50%; text-align: center;">
+            <img src="static/images/website_type.png" style="width: 100%; display: block;" alt="webretriever data statistics" class="responsive-image">
+            <p style="margin-top: 8px;">(b) Website Type Distribution</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content has-text-justified">
+        <div style="display: flex; gap: 10px; align-items: flex-start; justify-content: center; max-width: 800px; margin: 0 auto;">
+          <div style="width: 50%; text-align: center;">
+            <img src="static/images/intention_gener.png" style="width: 100%; height: auto;" alt="webretriever data statistics">
+            <p style="margin-top: 8px;">(c) General Intent Distribution</p>
+          </div>
+          <div style="width: 50%; text-align: center;">
+            <img src="static/images/intention_prof.png" style="width: 100%; height: auto;" alt="webretriever data statistics">
+            <p style="margin-top: 8px;">(d) Professional Intent Distribution</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content has-text-justified">
+        <div style="overflow-x: auto; max-width: 960px; margin: 0 auto;">
+          <div style="border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border: 1px solid #e8e8e8; overflow: hidden;">
+          <table id="benchmarkTable" class="table is-hoverable" style="margin: 0 auto; width: 100%; font-size: 0.9em; text-align: center; border-collapse: collapse;">
+            <thead>
+              <tr style="background: #f5f5f5; color: black;">
+                <th>Intent-Type</th>
+                <th style="text-align: center;">Benchmarks</th>
+                <th>Setting</th>
+                <th>Online</th>
+                <th>Interactive</th>
+                <th>Websites</th>
+                <th>Eval-Tasks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="11" style="vertical-align: middle; text-align: center; background: rgba(37,99,235,0.05);"><span style="color: #2563eb; font-weight: bold; font-size: 1.05em;">General</span></td>
+                <td style="text-align: center; font-weight: 600;">MiniWoB</td>
+                <td><span style="background: #e8e8e8; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Synthetic</span></td>
+                <td>❌</td>
+                <td>✔️</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;">100</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">MiniWoB++</td>
+                <td><span style="background: #e8e8e8; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Synthetic</span></td>
+                <td>❌</td>
+                <td>✔️</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;">100</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">WebArena</td>
+                <td><span style="background: #fff3e0; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Semi-real</span></td>
+                <td>❌</td>
+                <td>✔️</td>
+                <td style="text-align: center;">4</td>
+                <td style="text-align: center;">812</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">VisualWebArena</td>
+                <td><span style="background: #fff3e0; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Semi-real</span></td>
+                <td>❌</td>
+                <td>✔️</td>
+                <td style="text-align: center;">3</td>
+                <td style="text-align: center;">910</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">WebLINX</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>❌</td>
+                <td>❌</td>
+                <td style="text-align: center;">155</td>
+                <td style="text-align: center;">1,368</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">Mind2Web</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>❌</td>
+                <td>❌</td>
+                <td style="text-align: center;">137</td>
+                <td style="text-align: center;">1,341</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">Mind2Web-Live</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center;">46</td>
+                <td style="text-align: center;">104</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">AssistantBench</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center;">258</td>
+                <td style="text-align: center;">214</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">WebVoyager</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center;">15</td>
+                <td style="text-align: center;">643</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">Bearcubs</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center;">108</td>
+                <td style="text-align: center;">111</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">Online-Mind2Web</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center;">136</td>
+                <td style="text-align: center;">300</td>
+              </tr>
+              <tr>
+                <td rowspan="6" style="vertical-align: middle; text-align: center; background: rgba(230,126,34,0.05);"><span style="color: #e67e22; font-weight: bold; font-size: 1.05em;">Professional</span></td>
+                <td style="text-align: center; font-weight: 600;">WebShop</td>
+                <td><span style="background: #fff3e0; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Semi-real</span></td>
+                <td>❌</td>
+                <td>✔️</td>
+                <td style="text-align: center;">1</td>
+                <td style="text-align: center;">500</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">ST-WebAgentBench</td>
+                <td><span style="background: #fff3e0; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Semi-real</span></td>
+                <td>❌</td>
+                <td>✔️</td>
+                <td style="text-align: center;">3</td>
+                <td style="text-align: center;">222</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">Wonderbread</td>
+                <td><span style="background: #fff3e0; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Semi-real</span></td>
+                <td>❌</td>
+                <td>✔️</td>
+                <td style="text-align: center;">4</td>
+                <td style="text-align: center;">598</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">WorkArena</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center;">5</td>
+                <td style="text-align: center;">33</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">WorkArena++</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center;">5</td>
+                <td style="text-align: center;">682</td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 600;">OmniACT</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center;">27</td>
+                <td style="text-align: center;">736</td>
+              </tr>
+              <tr style="font-weight: bold; background: #fff8e1;">
+                <td style="border-right: 1px solid #ddd;"><span style="color: #2563eb; font-weight: bold;">General </span> &amp; <span style="color: #e67e22; font-weight: bold;"> Professional</span></td>
+                <td style="text-align: center;">WebRetriever</td>
+                <td><span style="background: #e8f5e9; padding: 2px 8px; border-radius: 10px; font-size: 0.85em;">Real</span></td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td style="text-align: center; color: #1976d2; font-size: 1.1em;">800</td>
+                <td style="text-align: center; color: #1976d2; font-size: 1.1em;">1,550</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <md-block>
+            (e) Comparison between WebRetriever and related benchmarks. Intent-Type: task intent type; Setting: the evaluation environment configuration; Online: whether online live connection evaluation is supported; Interactive: whether the environment allows interaction. 
+          </md-block>
+          <div style="margin: 20px 0; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; border-left: 4px solid #fdcb6e;">
+            <md-block style="color: #856404; margin: 0;">
+              **Note: Some benchmarks above also cover non-web CUA tasks; the counts reported here reflect only their web-related subsets.**
+            </md-block>
+          </div>
+        </div>
+      </div>
+      <!--/ Data Statistics. -->
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- NavEval. -->
+      <h2 class="title is-3">🧠 NavEval</h2>
+      <div class="content has-text-justified">
+        <p>
+          Current LLM-based evaluation pipelines exhibit limitations in organizing and utilizing evaluation signals. Existing methods employ 
+          three screenshot strategies: <strong>(1) full-trajectory screenshots</strong>, which provide comprehensive coverage but suffer from 
+          redundancy and high computational costs; <strong>(2) final screenshot only</strong>, which captures task completion status but misses 
+          critical intermediate process information; and <strong>(3) LLM-selected key screenshots</strong>, which reduce redundancy but lack 
+          sufficient accuracy in key step selection and matching. These limitations reveal the core challenge of automated evaluation: how to extract 
+          critical information to enhance LLM judgment accuracy. To address these limitations, we propose NavEval, which integrates more diverse 
+          information from agent-browser interactions. Beyond actions and final screenshots, NavEval leverages all navigation URLs and network requests 
+          generated during interactions. Through rule-based filtering to eliminate substantial noise, these signals are restructured into organized 
+          information that enhances LLM judgment accuracy.
+        </p>
+          <img src="static/images/naveval.png" width="80%" alt="webretriever naveval"
+          class="responsive-image" style="display: block; margin: 0 auto;">
+        <md-block>
+          Workflow of NavEval. Compared to existing methods, NavEval applies rule-based filtering to extract fine-grained intermediate signals, 
+          which are then jointly reasoned with the task description, action trajectory, and final screenshot by an LLM to determine task success, 
+          enabling robust evaluation with higher human agreement rates.
+        </md-block>
+      </div>
+      <!--/ NavEval. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Evaluation Protocols. -->
+      <h2 class="title is-3">📋 Evaluation Protocols</h2>
+      <div class="content has-text-justified">
+        <p>
+          To comprehensively evaluate web agent capabilities, we design three protocols reflecting realistic deployment scenarios. <strong>Protocol I</strong> 
+          assesses fundamental navigation ability by measuring whether agents can reach target pages given user tasks. Protocol II evaluates navigation 
+          performance when agents are provided with operational documentation. For <strong>Protocol II</strong>, operational knowledge is consolidated 
+          into structured documentation through a closed-loop framework. Web agents first generate action trajectories for target tasks, which NavEval 
+          evaluates automatically. Correct trajectories proceed to annotation, while incorrect ones are regenerated until reaching retry limits, after 
+          which human annotators refine them. The annotation platform further verifies accepted trajectories and streamlines redundant operations. 
+          Finally, LLMs generate operation manuals from these refined trajectories, completing the documentation pipeline. While Protocols I and II 
+          focus on navigation, realistic web environments require capabilities beyond page navigation. Agents must demonstrate deep page understanding, 
+          multi-source information integration, and precise extraction capabilities critical for holistic evaluation. <strong>Protocol III</strong> mirrors realistic 
+          deployment by assessing whether agents can accurately retrieve target information across multiple modalities (text, documents, charts). 
+          <br>
+          Based on these designs, we collect <strong>1,000</strong>, <strong>1,000</strong>, and <strong>100</strong> tasks for Protocols I, II, and III, respectively. Notably, Protocols I and II share <strong>550</strong> overlapping 
+          tasks, with the sole difference being the availability of operational documentation.
+        </p>
+        <img src="static/images/operation_document.png" width="80%" alt="webretriever operational documentation"
+          class="responsive-image" style="display: block; margin: 0 auto;">
+        <md-block>
+          Workflow of the semi-automated pipeline for constructing operational documentation in Protocol II. The process integrates automated exploration, evaluation, manual refinement, and LLM-based generation to produce high-quality operational documentation.
+        </md-block>
+      </div>
+      <!--/ Evaluation Protocols. -->
+    </div>
+  </section>
+
+  <section id="benchmark">
+    <div class="container" style="max-width: none; width: 95%; margin: 40px auto; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-x: visible;">
+
+      <div style="max-width: 1344px; margin: 0 auto; padding: 0 1.5rem;">
+        <h2 class="title is-3" id="leaderboard">🏆 Leaderboard</h2>
+        <!-- <md-block>We adopt state-of-the-art LLM and VLM from open-source representatives such as UI-TARS, SeeAct, Agent-S, Browser-Use and closed-source ones from Operator, GPT, Gemini, and Claude families on **WebRetriever**, as LLM and VLM agent
+          baselines. We also explore methods such as the Set-of-Marks aided approach, which has been demonstrated to improve spatial capabilities for visual reasoning.
+          **We are actively updating the benchmark with new LLMs, VLMs and methods. Pull requests welcomed!**
+        </md-block> -->
+      </div>
+
+    <div class="cover" id="contentCover">
+        <div class="container-t">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="infoCard">
+                <div class="infoBody">
+                  <!-- Important Notice about Google Drive Tasks -->
+                  <div style="margin: 20px 0; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; border-left: 4px solid #fdcb6e;">
+                    <div style="color: #856404; margin: 0;">
+                      <p>Important Notice:</p>
+                      <p>Results not listed on this leaderboard have not been verified by WebRetriever Team, and their accuracy is not guaranteed.</p>
+                    </div>
+                  </div>
+                  <div style="margin-bottom: 15px;">
+                    <h4 style="margin-bottom: 10px;">Evaluation Protocols:</h4>
+                    <p style="margin: 0; font-size: 0.95em; font-weight: 600;">(1) <strong style="color: #2563eb;">Protocol I</strong> &mdash; <strong style="color: #2563eb;">Evaluates basic navigation ability to reach target pages.</strong></p>
+                    <p style="margin: 0; font-size: 0.95em; font-weight: 600;">(2) <strong style="color: #2563eb;">Protocol II</strong> &mdash; <strong style="color: #2563eb;">Assesses navigation performance when provided with operational knowledge.</strong></p>
+                    <p style="margin: 0; font-size: 0.95em; font-weight: 600;">(3) <strong style="color: #2563eb;">Protocol III</strong> &mdash; <strong style="color: #2563eb;">Measures end-to-end task completion by jointly evaluating navigation and information extraction, avoiding the limitation of equating page arrival with task success.</strong></p>
+                    <p style="margin: 8px 0 0 0; font-size: 0.9em; color: #555;">For Protocols I and II, we maintain both human-verified success rates and NavEval automated success rates. For Protocol III, since it evaluates end-to-end task completion (including information extraction), only human-verified success rates are reported.</p>
+                  </div>
+                  <div style="margin-bottom: 15px;"></div>
+                    <h4 style="margin-bottom: 10px;">Auto Evaluation:</h4>
+                    <p style="margin: 0; font-size: 0.95em; font-weight: 600;">In our implementation, NavEval’s judgment module adopts <strong style="color: #2563eb;">Claude-4.5-Sonnet</strong> to ensure stable semantic understanding and reasoning. </p>
+                  </div>
+                  <!-- <div class="tabs is-centered example_lst" id="verifiedOnlyTabs">
+                    <ul>
+                      <li class="is-active"><a title="Verified">WebRetriever Benchmark Results</a></li>
+                    </ul>
+                  </div> -->
+                  <!-- SheetJS -->
+                  <script src="static/js/xlsx.full.min.js"></script>
+                  
+                  <script>
+                    async function loadAndRenderExcelData() {
+                      try {
+                        // Always load verified results first
+                        await loadVerifiedResults();
+                        initTabSwitching();
+                        
+                      } catch (error) {
+                        console.error('Error loading Excel data:', error);
+                        document.querySelectorAll('.lib_examples').forEach(container => {
+                          container.innerHTML = '<p>Error loading benchmark data. Please try again later.</p>';
+                        });
+                      }
+                    }
+
+                    async function loadVerifiedResults() {
+                      try {
+                        const response = await fetch('static/data/webretriever_results.xlsx');
+                        const arrayBuffer = await response.arrayBuffer();
+                        const data = new Uint8Array(arrayBuffer);
+                        const workbook = XLSX.read(data, { type: 'array' });
+                        
+                        const sheetName = workbook.SheetNames[0];
+                        const worksheet = workbook.Sheets[sheetName];
+                        
+                        if (worksheet) {
+                          // Handle double-header structure (row 1: Protocol names, row 2: Human/Auto Eval)
+                          const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+                          const header1 = rawData[0] || [];
+                          const header2 = rawData[1] || [];
+                          
+                          // Build column mapping: index → "Protocol I - Human Evaluation"
+                          const colMap = {};
+                          let currentProtocol = '';
+                          for (let i = 0; i < header1.length; i++) {
+                            if (header1[i] && String(header1[i]).trim()) {
+                              currentProtocol = String(header1[i]).trim();
+                            }
+                            if (header2[i] && String(header2[i]).trim()) {
+                              colMap[i] = currentProtocol + ' - ' + String(header2[i]).trim();
+                            }
+                          }
+                          
+                          // Detect available protocols
+                          const protocols = [...new Set(Object.values(colMap).map(c => c.split(' - ')[0]))];
+                          window.availableProtocols = protocols;
+                          
+                          // Convert to object array
+                          const metaCols = ['Agent', 'Model', 'Institution', 'PaperLink', 'PaperAuthors', 'Date'];
+                          const jsonData = rawData.slice(2).map(row => {
+                            const obj = {};
+                            metaCols.forEach((col, i) => { obj[col] = row[i]; });
+                            Object.entries(colMap).forEach(([i, name]) => { obj[name] = row[Number(i)]; });
+                            return obj;
+                          }).filter(row => row.Model);
+                          
+                          renderVerifiedTable(jsonData, 'BoardPanel5');
+                        }
+                      } catch (error) {
+                        console.error('Error loading verified results:', error);
+                        const container = document.getElementById('BoardPanel5');
+                        if (container) {
+                          container.innerHTML = '<p>Error loading benchmark data. Please try again later.</p>';
+                        }
+                      }
+                    }
+
+                    function aggregateByModel(data, protocol) {
+                      const groups = {};
+                      const humanCol = protocol + ' - Human Evaluation';
+                      const autoCol = protocol + ' - Auto Evaluation';
+                      
+                      data.forEach(row => {
+                        const agent = row.Agent || '';
+                        const model = row.Model || 'Unknown';
+                        const key = agent + '||' + model;
+                        if (!groups[key]) {
+                          groups[key] = {
+                            Agent: row.Agent,
+                            Model: row.Model,
+                            Institution: row.Institution,
+                            Date: row.Date,
+                            PaperLink: row.PaperLink,
+                            PaperAuthors: row.PaperAuthors,
+                            humanScores: [],
+                            autoScores: [],
+                          };
+                        }
+                        // Update to latest date
+                        if (row.Date && (!groups[key].Date || new Date(row.Date) > new Date(groups[key].Date))) {
+                          groups[key].Date = row.Date;
+                        }
+                        const h = parseFloat(row[humanCol]);
+                        const a = parseFloat(row[autoCol]);
+                        if (!isNaN(h)) groups[key].humanScores.push(h);
+                        if (!isNaN(a)) groups[key].autoScores.push(a);
+                      });
+                      
+                      const avg = arr => arr.length ? arr.reduce((s, v) => s + v, 0) / arr.length : NaN;
+                      const stdFn = arr => {
+                        if (arr.length <= 1) return 0;
+                        const m = avg(arr);
+                        return Math.sqrt(arr.reduce((s, v) => s + Math.pow(v - m, 2), 0) / arr.length);
+                      };
+                      
+                      return Object.values(groups).map(g => ({
+                        ...g,
+                        humanAvg: avg(g.humanScores),
+                        humanStd: stdFn(g.humanScores),
+                        autoAvg: avg(g.autoScores),
+                        autoStd: stdFn(g.autoScores),
+                        runCount: Math.max(g.humanScores.length, g.autoScores.length),
+                      })).filter(g => !isNaN(g.humanAvg) || !isNaN(g.autoAvg));
+                    }
+
+                    function renderVerifiedTable(tableData, containerId) {
+                      const container = document.getElementById(containerId);
+                      if (!container) return;
+                      window.verifiedRawData = tableData;
+                      
+                      // Determine available protocols from data
+                      const protocols = window.availableProtocols || ['Protocol I', 'Protocol II', 'Protocol III'];
+                      if (!window.verifiedSubTab || !protocols.includes(window.verifiedSubTab)) {
+                        window.verifiedSubTab = protocols[0];
+                      }
+                      const currentProtocol = window.verifiedSubTab;
+                      
+                      // Aggregate by model for current protocol
+                      window.currentProtocol = currentProtocol;
+                      let aggregatedData = aggregateByModel(tableData, currentProtocol);
+
+                      // Compute top 3 for podium (always by Human Eval)
+                      const podiumData = [...aggregatedData]
+                        .filter(r => !isNaN(r.humanAvg))
+                        .sort((a, b) => b.humanAvg - a.humanAvg)
+                        .slice(0, 3);
+                      
+                      const podiumStyles = [
+                        { borderColor: '#f0c040', medal: '\u{1F947}', shadow: 'rgba(240,192,64,0.25)', maxW: '300px', scoreSize: '1.8em', medalSize: '2.4em' },
+                        { borderColor: '#b0b0b0', medal: '\u{1F948}', shadow: 'rgba(176,176,176,0.2)', maxW: '260px', scoreSize: '1.5em', medalSize: '2em' },
+                        { borderColor: '#cd7f32', medal: '\u{1F949}', shadow: 'rgba(205,127,50,0.2)', maxW: '260px', scoreSize: '1.5em', medalSize: '2em' }
+                      ];
+                      
+                      const podiumAgent = (row) => row.Agent && row.Agent !== '\u{2014}' ? row.Agent : '';
+                      
+                      // Render order: 1st, 2nd, 3rd (left to right)
+                      const podiumOrder = podiumData.length >= 3 ? [
+                        { data: podiumData[0], style: podiumStyles[0] },
+                        { data: podiumData[1], style: podiumStyles[1] },
+                        { data: podiumData[2], style: podiumStyles[2] }
+                      ] : [];
+                      
+                      const podiumHTML = podiumOrder.length === 3 ? `
+                        <div style="display: flex; gap: 18px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap;">
+                          ${podiumOrder.map(({ data: row, style: s }) => {
+                            const agent = podiumAgent(row);
+                            const autoScore = !isNaN(row.autoAvg) && currentProtocol !== 'Protocol III' ? `<div style="color: #888; font-size: 0.85em; margin-top: 4px;">Auto: ${row.autoAvg.toFixed(1)}%</div>` : '';
+                            return `<div style="flex: 1; max-width: ${s.maxW}; min-width: 180px; background: #fff; border-top: 5px solid ${s.borderColor}; border-radius: 12px; padding: 22px 18px; text-align: center; box-shadow: 0 4px 20px ${s.shadow}; transition: transform 0.2s, box-shadow 0.2s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px ${s.shadow}'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px ${s.shadow}'">
+                              <div style="font-size: ${s.medalSize}; margin-bottom: 8px;">${s.medal}</div>
+                              ${agent ? `<div style="font-size: 0.8em; color: #999; margin-bottom: 2px;">${agent}</div>` : ''}
+                              <div style="font-weight: 700; font-size: 1.1em; color: #222; margin-bottom: 2px;">${row.Model || ''}</div>
+                              <div style="font-size: 0.75em; color: #aaa; margin-bottom: 14px;">${row.Institution || ''}</div>
+                              <div style="font-weight: 700; font-size: ${s.scoreSize}; color: #222; font-variant-numeric: tabular-nums; margin-bottom: 4px;">${row.humanAvg.toFixed(1)}%</div>
+                              <div style="color: #888; font-size: 0.8em;">Human Eval</div>
+                              ${autoScore}
+                              ${row.PaperLink ? `<a href="${row.PaperLink}" target="_blank" style="display: inline-block; margin-top: 10px; color: #3273dc; font-size: 0.75em; text-decoration: none; opacity: 0.7; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">\u{1F4C4} ${row.PaperAuthors || 'Paper'}</a>` : ''}
+                            </div>`;
+                          }).join('')}
+                        </div>
+                      ` : '';
+                      
+                      
+                      const subTabsHTML = `
+                        <div class="tabs is-centered example_lst" id="verifiedScopeTabs" style="margin-bottom: 10px;">
+                          <ul>
+                            ${protocols.map(p => `<li ${p === currentProtocol ? 'class="is-active"' : ''}><a title="${p}">${p}</a></li>`).join('')}
+                          </ul>
+                        </div>
+                      `;
+                      
+                      let tableHTML = subTabsHTML + podiumHTML + `
+                        <div style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                              <label for="sortBy" style="font-weight: bold; margin: 0;">Sort by:</label>
+                              <select id="sortBy" onchange="sortVerifiedTable()" style="padding: 6px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9em;">
+                                <option value="human">Human Eval ↓</option>
+                                <option value="score">Auto Eval ↓</option>
+                                <option value="date">Date ↓</option>
+                                <option value="model">Model A-Z</option>
+                              </select>
+                            </div>
+                            <div>
+                              <button onclick="clearVerifiedFilters()" style="padding: 5px 10px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear Filters</button>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        
+                        <div id="modelCount" style="text-align:right;color:#999;font-size:0.85em;padding:4px 10px;"></div>
+                        <div style="width: 100%; max-width: calc(100vw - 40px); border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border: 1px solid #e8e8e8;">
+                          <table id="verifiedResultsTable" style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
+                            <thead>
+                              <tr style="background: #363636; color: white;">
+                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; width: 60px; color: black; border-top-left-radius: 10px;">#</th>
+                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 14px; text-align: center; min-width: 140px; color: black;">Agent</th>
+                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 14px; text-align: center; min-width: 200px; color: black;">Model</th>
+                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; min-width: 120px; color: black; border-top-right-radius: ${currentProtocol === "Protocol III" ? "10px" : "0"};">Human Eval</th>
+                                ${currentProtocol !== 'Protocol III' ? '<th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; min-width: 120px; color: black; border-top-right-radius: 10px;">Auto Eval</th>' : ''}
+                              </tr>
+                            </thead>
+                            <tbody id="verifiedTableBody"></tbody>
+                          </table>
+                        </div>
+                      `;
+                      
+                      container.innerHTML = tableHTML;
+                      window.verifiedTableData = aggregatedData;
+                      
+                      // Attach protocol sub-tab switching
+                      document.querySelectorAll('#verifiedScopeTabs a').forEach(a => {
+                        a.addEventListener('click', () => {
+                          window.verifiedSubTab = a.getAttribute('title');
+                          renderVerifiedTable(window.verifiedRawData, 'BoardPanel5');
+                        });
+                      });
+                      
+                      setDefaultModelTypeFilters();
+                      filterVerifiedTable();
+                    }
+
+                    function setDefaultModelTypeFilters() {
+                      // No approach type filter in new format
+                    }
+
+                    function renderVerifiedTableRows(data) {
+                      const tbody = document.getElementById('verifiedTableBody');
+                      if (!tbody) return;
+
+                      const sortBy = document.getElementById('sortBy')?.value || 'human';
+                      let sortedData = [...data];
+
+                      if (sortBy === 'score') {
+                        sortedData.sort((a, b) => (parseFloat(b.autoAvg) || 0) - (parseFloat(a.autoAvg) || 0));
+                      } else if (sortBy === 'human') {
+                        sortedData.sort((a, b) => (parseFloat(b.humanAvg) || 0) - (parseFloat(a.humanAvg) || 0));
+                      } else if (sortBy === 'date') {
+                        sortedData.sort((a, b) => {
+                          const parseD = (v) => {
+                            if (!v || v === 'NaT') return new Date(0);
+                            if (v instanceof Date && !isNaN(v.getTime())) return v;
+                            if (typeof v === 'number' && v > 40000 && v < 50000) {
+                              const d = new Date((v - 25569) * 86400 * 1000);
+                              if (!isNaN(d.getTime()) && d.getFullYear() >= 2020) return d;
+                            }
+                            const s = String(v);
+                            const m = s.match(/(\d{4}-\d{2}-\d{2})/);
+                            if (m) { const d = new Date(m[1]); if (!isNaN(d.getTime())) return d; }
+                            const d = new Date(v);
+                            if (!isNaN(d.getTime()) && d.getFullYear() >= 2020) return d;
+                            return new Date(0);
+                          };
+                          return parseD(b.Date) - parseD(a.Date);
+                        });
+                      } else if (sortBy === 'model') {
+                        sortedData.sort((a, b) => (a.Model || '').toLowerCase().localeCompare((b.Model || '').toLowerCase()));
+                      }
+
+                      const parseExcelDate = (dateVal) => {
+                        if (!dateVal || dateVal === 'NaT') return null;
+                        if (dateVal instanceof Date && !isNaN(dateVal.getTime())) return dateVal;
+                        if (typeof dateVal === 'number' && dateVal > 40000 && dateVal < 50000) {
+                          const d = new Date((dateVal - 25569) * 86400 * 1000);
+                          if (!isNaN(d.getTime()) && d.getFullYear() >= 2020) return d;
+                        }
+                        const s = String(dateVal);
+                        const m = s.match(/(\d{4}-\d{2}-\d{2})/);
+                        if (m) { const d = new Date(m[1]); if (!isNaN(d.getTime()) && d.getFullYear() >= 2020) return d; }
+                        const d = new Date(dateVal);
+                        if (!isNaN(d.getTime()) && d.getFullYear() >= 2020 && d.getFullYear() <= 2030) return d;
+                        return null;
+                      };
+
+                      const fmtScore = (avg, rank, isTop) => {
+                        if (isNaN(avg)) return '<span style="color: #bbb;">—</span>';
+                        const s = parseFloat(avg).toFixed(1);
+                        const color = isTop ? '#d4380d' : '#4CAF50';
+                        const fontStyle = isTop ? 'font-size:1.15em;font-weight:700;' : 'font-weight:600;';
+                        const barGradient = isTop 
+                          ? 'linear-gradient(90deg, #f6d365, #fda085)' 
+                          : 'linear-gradient(90deg, #4CAF50, #8BC34A)';
+                        return `<div style="text-align:center;">
+                          <span style="${fontStyle}color:${color};font-variant-numeric:tabular-nums;">${s}%</span>
+                          <div style="width:80px;height:4px;background:#eee;border-radius:2px;margin:4px auto 0;">
+                            <div style="width:${Math.min(s,100)}%;height:100%;background:${barGradient};border-radius:2px;"></div>
+                          </div>
+                        </div>`;
+                      };
+
+                      // Rank display
+                      const rankDisplay = (r) => r;
+
+                      // Find best scores for highlighting
+                      const bestHuman = Math.max(...sortedData.map(r => parseFloat(r.humanAvg) || 0));
+                      const bestAuto = Math.max(...sortedData.map(r => parseFloat(r.autoAvg) || 0));
+
+                      // Compute human eval medals (top 3 by humanAvg, fixed regardless of sort)
+                      const humanRanked = [...sortedData].sort((a, b) => (parseFloat(b.humanAvg) || 0) - (parseFloat(a.humanAvg) || 0));
+                      const humanMedals = {};
+                      const medalKey = (row) => (row.Agent || '') + '||' + (row.Model || '');
+                      if (humanRanked.length > 0 && !isNaN(humanRanked[0].humanAvg)) humanMedals[medalKey(humanRanked[0])] = "🥇";
+                      if (humanRanked.length > 1 && !isNaN(humanRanked[1].humanAvg)) humanMedals[medalKey(humanRanked[1])] = "🥈";
+                      if (humanRanked.length > 2 && !isNaN(humanRanked[2].humanAvg)) humanMedals[medalKey(humanRanked[2])] = "🥉";
+
+                      let html = '';
+                      sortedData.forEach((row, index) => {
+                        const rank = index + 1;
+                        const bgColor = index % 2 === 1 ? '#fafafa' : 'white';
+
+                        let dateDisplay = '';
+                        const parsed = parseExcelDate(row.Date);
+                        if (parsed) dateDisplay = parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                        else if (row.Date) dateDisplay = String(row.Date);
+
+                        const agentDisplay = row.Agent && row.Agent !== '—' ? row.Agent : '—';
+                        const rowMedalKey = medalKey(row);
+                        const medal = humanMedals[rowMedalKey] || '';
+                        const medalBorderColors = { '🥇': '#f0c040', '🥈': '#b0b0b0', '🥉': '#cd7f32' };
+                        const leftBorder = medal && medalBorderColors[medal] ? `border-left: 4px solid ${medalBorderColors[medal]};` : '';
+
+                        html += `
+                          <tr style="background: ${bgColor}; border-bottom: 1px solid #eee; ${leftBorder} transition: background 0.2s;"
+                              onmouseover="this.style.background='#e8f4fd'" onmouseout="this.style.background='${bgColor}'">
+                            <td style="padding: 12px 10px; text-align: center; vertical-align: middle; font-size: 1.1em; font-weight: 600;">
+                              ${rankDisplay(rank)}
+                            </td>
+                            <td style="padding: 12px 14px; vertical-align: middle; text-align: center;">
+                              <div style="font-weight: 600; font-size: 1.05em; color: #444;">${agentDisplay}</div>
+                            </td>
+                            <td style="padding: 12px 14px; vertical-align: middle; text-align: center;">
+                              <div style="font-weight: 700; font-size: 1.15em; color: #222;">${row.Model || ''}</div>
+                              ${row.Institution ? `<div style="color: #888; font-size: 0.85em; margin-top: 2px;">${row.Institution}</div>` : ''}
+                              ${dateDisplay ? `<div style="color: #aaa; font-size: 0.8em; margin-top: 2px;">${dateDisplay}</div>` : ''}
+                              ${row.PaperLink ? `<a href="${row.PaperLink}" target="_blank" style="color: #3273dc; font-size: 0.8em; text-decoration: none;">📄 ${row.PaperAuthors || 'Paper'}</a>` : ''}
+                            </td>
+                            <td style="padding: 12px 10px; text-align: center; vertical-align: middle;">
+                              ${fmtScore(row.humanAvg, rank, parseFloat(row.humanAvg) === bestHuman && bestHuman > 0)}
+                            </td>
+                            ${window.currentProtocol !== 'Protocol III' ? `<td style="padding: 12px 10px; text-align: center; vertical-align: middle;">
+                              ${fmtScore(row.autoAvg, rank, parseFloat(row.autoAvg) === bestAuto && bestAuto > 0)}
+                            </td>` : ''}
+                          </tr>
+                        `;
+                      });
+
+                      if (sortedData.length === 0) {
+                        html = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#999;">No matching models found.</td></tr>';
+                      }
+                      tbody.innerHTML = html;
+                      const countEl = document.getElementById('modelCount');
+                      if (countEl) countEl.textContent = sortedData.length + ' models';
+                    }
+
+
+
+                    function filterVerifiedTable() {
+                      if (!window.verifiedTableData) return;
+                      renderVerifiedTableRows(window.verifiedTableData);
+                    }
+
+                    function sortVerifiedTable() {
+                      filterVerifiedTable();
+                    }
+
+                    function clearVerifiedFilters() {
+                      document.getElementById('sortBy').value = 'human';
+                      if (window.verifiedTableData) {
+                        filterVerifiedTable();
+                      }
+                    }
+                    
+                    function initTabSwitching() {
+                      // Add event listeners for both tab containers
+                      document.querySelectorAll("#verifiedOnlyTabs li").forEach(e => {
+                        e.addEventListener("click", function(eve) {
+                          const clickedElement = eve.target;
+                          const tabTitle = clickedElement.getAttribute('title');
+                          
+                          // Find the currently visible tab container
+                          const verifiedTabs = document.getElementById('verifiedOnlyTabs');
+                          const activeContainer = verifiedTabs;
+                          
+                          // Update active tab only in the active container
+                          activeContainer.querySelectorAll('a').forEach(link => {
+                            if (link.getAttribute('title') === tabTitle) {
+                              link.parentElement.className = "is-active";
+                            } else {
+                              link.parentElement.className = "";
+                            }
+                          });
+                          
+                          // Show/hide corresponding content
+                          for (let block of document.getElementsByClassName('lib_examples')) {
+                            block.style.display = (block.title === tabTitle) ? 'block' : 'none';
+                          }
+                        });
+                      });
+                    }
+                    document.addEventListener('DOMContentLoaded', () => {
+                      loadAndRenderExcelData();
+                      
+                    });
+                  </script>
+<div title="Verified" class="lib_examples" id="BoardPanel5" style="display: block;">
+                    <p>Loading verified benchmark data...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <!-- Evaluation. -->
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Evaluation Guideline</h2>
+      
+      <!-- <div class="content has-text-justified">
+        <h3 class="title is-4">Local Evaluation</h3>
+        <md-block>
+        </md-block>
+
+        <h3 class="title is-4">Public Evaluation</h3>
+        <md-block>
+        </md-block>
+      </div> -->
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{webretriever-2026,
+      title={WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation},
+      author={Wei Dong and Tianyu Fu and Zhe Yu and Hanning Wang and Anyang Su and Zhizhou Fang and Yuyang Chen and Shuo Wang and Minghui Wu and Ping Jiang and Zhen Lei and Chenxu Zhao},
+      year={2026},
+      note={To be published},
+      url={https://github.com/hhhhhhalf/WebRetriever}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="" target="_blank">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/hhhhhhalf/WebRetriever" class="external-link" disabled target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Visitor Counter -->
+      <style>
+        @keyframes fadeInCounter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .vc-wrap { opacity: 0; animation: fadeInCounter 0.8s ease 0.3s forwards; }
+        .vc-num { font-size: 1.3em; font-weight: 600; color: #5b9bd5; line-height: 1.2; transition: all 0.3s ease; }
+        .vc-label { font-size: 0.75em; color: #aaa; letter-spacing: 0.5px; margin-top: 4px; }
+        .vc-divider { width: 1px; height: 28px; background: #d0e4f5; }
+      </style>
+      <div style="text-align: center; margin: 28px 0 16px;">
+        <div class="vc-wrap" style="display: inline-flex; align-items: center; gap: 28px; padding: 16px 32px;">
+          <div style="display: flex; flex-direction: column; align-items: center; min-width: 80px;">
+            <div class="vc-num" id="visitor-count">-</div>
+            <div class="vc-label" id="visitor-primary-label">Visitors</div>
+          </div>
+          <div class="vc-divider"></div>
+          <div style="display: flex; flex-direction: column; align-items: center; min-width: 80px;">
+            <div class="vc-num" id="visitor-secondary">-</div>
+            <div class="vc-label" id="visitor-secondary-label">Page Views</div>
+          </div>
+        </div>
+      </div>
+      <!-- Hidden busuanzi targets -->
+      <span id="busuanzi_value_site_uv" style="display:none;"></span>
+      <span id="busuanzi_value_site_pv" style="display:none;"></span>
+
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/hhhhhhalf/WebRetriever.github.io/">source
+                code</a> of this website,
+              we just ask that you link back to this page in the footer. The design of this website is based on 
+              <a href="https://nerfies.github.io/">Nerfies</a> and <a href="https://os-world.github.io/">OSWorld</a>. Please remember to remove the analytics code included in the header 
+              of the website which you do not want on your website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <!-- Visitor Counter Script (3-layer fallback) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var countEl = document.getElementById('visitor-count');
+      var secondaryEl = document.getElementById('visitor-secondary');
+      var primaryLabelEl = document.getElementById('visitor-primary-label');
+      var secondaryLabelEl = document.getElementById('visitor-secondary-label');
+      var bsUv = document.getElementById('busuanzi_value_site_uv');
+      var bsPv = document.getElementById('busuanzi_value_site_pv');
+
+      var NAMESPACE = 'webretriever.github.io';
+      var TOTAL_KEY = 'visits';
+      var now = new Date();
+      var dateKey = [now.getFullYear(), String(now.getMonth()+1).padStart(2,'0'), String(now.getDate()).padStart(2,'0')].join('-');
+      var TODAY_KEY = 'visits-' + dateKey;
+      var SESSION_KEY = 'wr-visit-inc-' + dateKey;
+      var refreshing = false;
+
+      function fmt(v) {
+        var s = String(v).replace(/[^\d]/g, '');
+        return s ? Number(s).toLocaleString() : '-';
+      }
+
+      function pop(el, val) {
+        el.textContent = fmt(val);
+        el.style.transform = 'scale(1.08)';
+        setTimeout(function() { el.style.transform = 'scale(1)'; }, 250);
+      }
+
+      function saveCache(total, secondary, label) {
+        try {
+          localStorage.setItem('wr-vc-total', String(total));
+          localStorage.setItem('wr-vc-secondary', String(secondary));
+          localStorage.setItem('wr-vc-label', label);
+        } catch(e) {}
+      }
+
+      function loadCache() {
+        try {
+          var t = localStorage.getItem('wr-vc-total');
+          var s = localStorage.getItem('wr-vc-secondary');
+          var l = localStorage.getItem('wr-vc-label');
+          if (t !== null) {
+            countEl.textContent = fmt(t);
+            secondaryEl.textContent = fmt(s || '');
+            secondaryLabelEl.textContent = l || 'Page Views';
+            countEl.style.color = '#999';
+            secondaryEl.style.color = '#999';
+            return true;
+          }
+        } catch(e) {}
+        return false;
+      }
+
+      function fetchWithTimeout(url, ms) {
+        var ctrl = new AbortController();
+        var tid = setTimeout(function() { ctrl.abort(); }, ms);
+        return fetch(url, {signal: ctrl.signal}).finally(function() { clearTimeout(tid); });
+      }
+
+      /* Layer 1: CountAPI */
+      function tryCountApi() {
+        var inc = false;
+        try { inc = sessionStorage.getItem(SESSION_KEY) === '1'; } catch(e) {}
+        var totalUrl = 'https://api.countapi.xyz/' + (inc ? 'get' : 'hit') + '/' + NAMESPACE + '/' + TOTAL_KEY;
+        var todayUrl = 'https://api.countapi.xyz/' + (inc ? 'get' : 'hit') + '/' + NAMESPACE + '/' + TODAY_KEY;
+        return Promise.all([
+          fetchWithTimeout(totalUrl, 5000).then(function(r) { return r.json(); }),
+          fetchWithTimeout(todayUrl, 5000).then(function(r) { return r.json(); })
+        ]).then(function(results) {
+          var total = results[0], today = results[1];
+          if (!total || typeof total.value !== 'number') throw new Error('bad');
+          primaryLabelEl.textContent = 'Visitors';
+          secondaryLabelEl.textContent = 'Today';
+          pop(countEl, total.value);
+          pop(secondaryEl, today.value);
+          countEl.style.color = '#5b9bd5';
+          secondaryEl.style.color = '#5b9bd5';
+          saveCache(total.value, today.value, 'Today');
+          if (!inc) { try { sessionStorage.setItem(SESSION_KEY, '1'); } catch(e) {} }
+          return true;
+        }).catch(function(e) {
+          console.log('CountAPI unavailable:', e.message);
+          return false;
+        });
+      }
+
+      /* Layer 2: busuanzi */
+      function tryBusuanzi() {
+        primaryLabelEl.textContent = 'Visitors';
+        secondaryLabelEl.textContent = 'Page Views';
+        return new Promise(function(resolve) {
+          var attempts = 0;
+          var timer = setInterval(function() {
+            attempts++;
+            var uv = (bsUv.textContent || '').trim();
+            var pv = (bsPv.textContent || '').trim();
+            if (uv && pv && /\d/.test(uv) && /\d/.test(pv)) {
+              clearInterval(timer);
+              pop(countEl, uv);
+              pop(secondaryEl, pv);
+              countEl.style.color = '#5b9bd5';
+              secondaryEl.style.color = '#5b9bd5';
+              saveCache(uv, pv, 'Page Views');
+              resolve(true);
+            } else if (attempts >= 40) {
+              clearInterval(timer);
+              console.log('busuanzi unavailable');
+              resolve(false);
+            }
+          }, 500);
+        });
+      }
+
+      /* Layer 3: localStorage cache (called if both fail) */
+
+      async function refresh() {
+        if (refreshing) return;
+        refreshing = true;
+        var ok = await tryCountApi();
+        if (!ok) ok = await tryBusuanzi();
+        if (!ok) {
+          if (!loadCache()) {
+            countEl.textContent = '-';
+            secondaryEl.textContent = '-';
+          }
+        }
+        refreshing = false;
+      }
+
+      refresh();
+      setInterval(refresh, 300000);
+    });
+  </script>
+</body>
+
+</html>
