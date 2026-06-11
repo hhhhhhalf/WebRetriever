@@ -1,10 +1,10 @@
 <h1 align="center">🌐 WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation</h1>
 <p align="center">
-<a href="https://github.com/hhhhhhalf/WebRetriever" target="_blank">📃 Paper</a>
+<a href="https://github.com/hhhhhhalf/WebRetriever">📃 Paper</a>
 •
-<a href="https://hhhhhhalf.github.io/WebRetriever/" target="_blank">🏆 Leaderboard</a>
+<a href="https://hhhhhhalf.github.io/WebRetriever/">🏆 Leaderboard</a>
 •
-<a href="https://github.com/hhhhhhalf/WebRetriever" target="_blank">🤗 Data (Release Soon)</a>
+<a href="https://github.com/hhhhhhalf/WebRetriever">🤗 Data (Release Soon)</a>
 •
 🔤 English | <a href="https://github.com/hhhhhhalf/WebRetriever/blob/main/README_zh.md">中文</a>
 </p>
