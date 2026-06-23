@@ -1,12 +1,12 @@
 <h1 align="center">🌐 WebRetriever: A Large-Scale Comprehensive Benchmark for Efficient Web Agent Evaluation</h1>
 <p align="center">
-<a href="https://github.com/hhhhhhalf/WebRetriever">📃 Paper</a>
+<a href="https://github.com/mininglamp-ai/WebRetriever">📃 Paper</a>
 •
-<a href="https://hhhhhhalf.github.io/WebRetriever/">🏆 Leaderboard</a>
+<a href="https://mininglamp-ai.github.io/WebRetriever/">🏆 Leaderboard</a>
 •
-<a href="https://github.com/hhhhhhalf/WebRetriever">🤗 Data (Release Soon)</a>
+<a href="https://github.com/mininglamp-ai/WebRetriever">🤗 Data (Release Soon)</a>
 •
-🔤 English | <a href="https://github.com/hhhhhhalf/WebRetriever/blob/main/README_zh.md">中文</a>
+🔤 English | <a href="https://github.com/mininglamp-ai/WebRetriever/blob/main/README_zh.md">中文</a>
 </p>
 
 
