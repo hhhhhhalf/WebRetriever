@@ -4,7 +4,7 @@
 •
 <a href="https://mininglamp-ai.github.io/WebRetriever/">🏆 排行榜</a>
 •
-<a href="https://github.com/mininglamp-ai/WebRetriever">🤗 数据 (即将发布)</a>
+<a href="https://huggingface.co/datasets/Mininglamp-2718/WebRetriever">🤗 数据</a>
 •
 🔤 <a href="https://github.com/mininglamp-ai/WebRetriever/blob/main/README.md">English</a> | 中文
 </p>
