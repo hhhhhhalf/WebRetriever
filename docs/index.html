@@ -854,12 +854,12 @@
                         <div style="width: 100%; max-width: calc(100vw - 40px); border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border: 1px solid #e8e8e8;">
                           <table id="verifiedResultsTable" style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
                             <thead>
-                              <tr style="background: linear-gradient(135deg, #1e3a5f, #2563eb); color: white;">
-                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; width: 60px; color: #fff; border-top-left-radius: 10px;">#</th>
-                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 14px; text-align: center; min-width: 140px; color: #fff;">Agent</th>
-                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 14px; text-align: center; min-width: 200px; color: #fff;">Model</th>
-                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; min-width: 120px; color: #fff; border-top-right-radius: ${currentProtocol === "Protocol III" ? "10px" : "0"};">Human Eval</th>
-                                ${currentProtocol !== 'Protocol III' ? '<th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; min-width: 120px; color: #fff; border-top-right-radius: 10px;">Auto Eval</th>' : ''}
+                              <tr style="background: #363636; color: white;">
+                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; width: 60px; color: black; border-top-left-radius: 10px;">#</th>
+                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 14px; text-align: center; min-width: 140px; color: black;">Agent</th>
+                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 14px; text-align: center; min-width: 200px; color: black;">Model</th>
+                                <th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; min-width: 120px; color: black; border-top-right-radius: ${currentProtocol === "Protocol III" ? "10px" : "0"};">Human Eval</th>
+                                ${currentProtocol !== 'Protocol III' ? '<th style="position: sticky; top: 0; z-index: 10; padding: 12px 10px; text-align: center; min-width: 120px; color: black; border-top-right-radius: 10px;">Auto Eval</th>' : ''}
                               </tr>
                             </thead>
                             <tbody id="verifiedTableBody"></tbody>
@@ -937,10 +937,11 @@
                       const fmtScore = (avg, rank, isTop) => {
                         if (isNaN(avg)) return '<span style="color: #bbb;">—</span>';
                         const s = parseFloat(avg).toFixed(1);
+                        // const color = isTop ? '#d4380d' : '#4CAF50';
                         const color = isTop ? '#b8860b' : '#2563eb';
                         const fontStyle = isTop ? 'font-size:1.15em;font-weight:700;' : 'font-weight:600;';
                         const barGradient = isTop 
-                          ? 'linear-gradient(90deg, #ffe066, #f0c040)' 
+                          ? 'linear-gradient(90deg, #f6d365, #fda085)' 
                           // : 'linear-gradient(90deg, #4CAF50, #8BC34A)';
                           : 'linear-gradient(90deg, #93b8f5, #2563eb)';
                         return `<div style="text-align:center;">
