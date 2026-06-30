@@ -934,12 +934,13 @@
                       const fmtScore = (avg, rank, isTop) => {
                         if (isNaN(avg)) return '<span style="color: #bbb;">—</span>';
                         const s = parseFloat(avg).toFixed(1);
-                        const color = isTop ? '#d4380d' : '#4CAF50';
+                        // const color = isTop ? '#d4380d' : '#4CAF50';
+                        const color = isTop ? '#d4380d' : '#2563eb';
                         const fontStyle = isTop ? 'font-size:1.15em;font-weight:700;' : 'font-weight:600;';
                         const barGradient = isTop 
                           ? 'linear-gradient(90deg, #f6d365, #fda085)' 
-                          : 'linear-gradient(90deg, #93b8f5, #2563eb)';
                           // : 'linear-gradient(90deg, #4CAF50, #8BC34A)';
+                          : 'linear-gradient(90deg, #93b8f5, #2563eb)';
                         return `<div style="text-align:center;">
                           <span style="${fontStyle}color:${color};font-variant-numeric:tabular-nums;">${s}%</span>
                           <div style="width:80px;height:4px;background:#eee;border-radius:2px;margin:4px auto 0;">
